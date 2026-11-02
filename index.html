@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#030303">
+<meta name="description" content="RAG Based Assistant: ask your course a question and jump to the exact video and second that answers it.">
+<meta property="og:title" content="RAG Based Assistant">
+<meta property="og:description" content="Ask the course. Get the exact moment.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c8ff2e'/%3E%3Ccircle cx='28' cy='28' r='13' fill='none' stroke='%23050505' stroke-width='6'/%3E%3Cpath d='M38 38l14 14' stroke='%23050505' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<title>RAG Based Assistant — Sign in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#efede6;--fg:#0a0a0a;--card:#f8f6f0;--mu:#e0ddd2;--mf:#55524a;--bd:#0a0a0a;--ac:#0a0a0a;--acf:#f4f2ec;--tl:#177a36;--rd:#c4161c;--sh:#0a0a0a;--hl:#ffd60a;--hlf:#0a0a0a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#030303;--fg:#f5f5f5;--card:#0c0c0c;--mu:#1a1a1a;--mf:#9b9b9b;--bd:#2e2e2e;--ac:#c8ff2e;--acf:#050505;--tl:#c8ff2e;--rd:#ff5a5a;--sh:#c8ff2e;--hl:#c8ff2e;--hlf:#050505}}
+:root[data-theme="dark"]{--bg:#030303;--fg:#f5f5f5;--card:#0c0c0c;--mu:#1a1a1a;--mf:#9b9b9b;--bd:#2e2e2e;--ac:#c8ff2e;--acf:#050505;--tl:#c8ff2e;--rd:#ff5a5a;--sh:#c8ff2e;--hl:#c8ff2e;--hlf:#050505}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;min-height:100dvh;background:var(--bg);color:var(--fg);font:15px/1.5 Geist,ui-sans-serif,system-ui,sans-serif}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+:root[data-theme="light"] :focus-visible{outline-color:var(--fg)}
+.page{min-height:100vh;min-height:100dvh;display:grid;grid-template-columns:1fr}
+.brand{padding:22px 20px 6px}
+.logo{display:flex;align-items:center;gap:12px}
+.mark{width:42px;height:42px;border-radius:10px;background:var(--ac);color:var(--acf);display:grid;place-items:center}
+.disp{font-family:Archivo,Geist,system-ui,sans-serif;font-weight:900;letter-spacing:-.03em}
+.sub{color:var(--mf);font-size:13px}
+.hero{display:none}
+.panel{display:flex;flex-direction:column;justify-content:center;padding:18px 20px 30px}
+.card{width:100%;max-width:440px;margin:0 auto;background:var(--card);border:2px solid var(--bd);border-radius:14px;padding:22px;box-shadow:6px 6px 0 var(--sh)}
+h1{font-size:30px;line-height:1;margin:0 0 8px;text-transform:uppercase}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--bd);border-radius:10px;padding:3px;margin-bottom:20px;gap:3px}
+.seg button{border:0;background:transparent;border-radius:7px;padding:10px;min-height:44px;cursor:pointer;color:var(--mf);font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:12.5px}
+.seg button[aria-selected=true]{background:var(--ac);color:var(--acf)}
+label{display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin:16px 0 6px}
+.field{position:relative}
+input[type=text],input[type=email],input[type=password]{width:100%;min-height:50px;font-size:16px;font-weight:500;background:var(--bg);border:2px solid var(--bd);border-radius:10px;padding:10px 14px}
+input[type=text]:focus,input[type=email]:focus,input[type=password]:focus{border-color:var(--fg)}
+input[aria-invalid=true]{border-color:var(--rd)}
+.eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:transparent;min-width:48px;min-height:40px;color:var(--mf);cursor:pointer;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.err{color:var(--rd);font-size:12.5px;font-weight:500;margin-top:5px}
+.banner{border:2px solid var(--rd);color:var(--rd);border-radius:10px;padding:10px 12px;font-size:13.5px;font-weight:500;margin-top:10px}
+.btn{width:100%;min-height:50px;border-radius:10px;border:2px solid var(--bd);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:13px;transition:transform .12s,box-shadow .12s}
+.btn:hover{background:var(--mu)}
+.btn.pri{background:var(--ac);color:var(--acf);border-color:var(--ac);margin-top:20px}
+.btn.pri:hover{background:var(--ac);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--fg)}
+.btn:disabled{opacity:.6;cursor:progress;transform:none;box-shadow:none}
+.link{background:none;border:0;color:var(--fg);cursor:pointer;padding:6px 0;min-height:36px;font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;font-weight:500;text-transform:none;letter-spacing:0;margin:16px 0 0;cursor:pointer}
+.chk input{width:22px;height:22px;margin:0;accent-color:var(--ac);flex:none}
+.or{display:flex;align-items:center;gap:10px;color:var(--mf);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin:18px 0}
+.or:before,.or:after{content:"";flex:1;height:2px;background:var(--bd)}
+.meter{display:flex;gap:4px;margin-top:8px}.meter i{flex:1;height:6px;border-radius:2px;background:var(--mu)}
+.spin{width:16px;height:16px;border-radius:50%;border:3px solid currentColor;border-top-color:transparent;animation:s .7s linear infinite}
+@keyframes s{to{transform:rotate(360deg)}}
+.fine{font-size:12px;color:var(--mf);text-align:center;margin:18px auto 0;max-width:440px;padding:0 6px}
+.ok{width:58px;height:58px;border-radius:12px;background:var(--tl);color:var(--bg);display:grid;place-items:center;margin-bottom:16px}
+.top{position:absolute;right:16px;top:calc(14px + env(safe-area-inset-top,0px));z-index:5}
+.theme{border:2px solid var(--bd);background:var(--card);border-radius:10px;min-height:42px;padding:0 14px;cursor:pointer;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+mark{background:var(--hl);color:var(--hlf);padding:0 .12em}
+@media(prefers-reduced-motion:reduce){.spin{animation-duration:2s}.btn{transition:none}}
+@media(min-width:900px){
+ .page{grid-template-columns:1.15fr 1fr}
+ .brand{display:none}
+ .hero{display:flex;flex-direction:column;justify-content:space-between;padding:44px 52px;border-right:2px solid var(--bd);position:relative;overflow:hidden}
+ .hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--fg) 1px,transparent 1px),linear-gradient(90deg,var(--fg) 1px,transparent 1px);background-size:56px 56px;opacity:.06;pointer-events:none}
+ .hero>*{position:relative}
+ .hero h2{font-size:clamp(44px,5.6vw,84px);line-height:.94;letter-spacing:-.04em;text-transform:uppercase;margin:22px 0 18px}
+ .demo{max-width:430px;border:2px solid var(--bd);background:var(--card);border-radius:14px;padding:16px;box-shadow:6px 6px 0 var(--sh)}
+ .chip{display:inline-block;border-radius:6px;background:var(--hl);color:var(--hlf);padding:2px 10px;font-size:12px;font-weight:800;margin-top:8px}
+ .panel{padding:44px}
+}
+
+body{display:flex;flex-direction:column}
+.page{flex:1;min-height:0}
+.top{position:static;display:flex;gap:8px;justify-content:flex-end;padding:12px 16px 0}
+input[type=file],textarea,select{width:100%;font-size:16px;font-weight:500;background:var(--bg);border:2px solid var(--bd);border-radius:10px;padding:10px 12px;color:var(--fg)}
+input[type=file]{border-style:dashed;font-size:14px}
+textarea{resize:vertical;min-height:96px;font-family:inherit}
+dialog{border:2px solid var(--bd);border-radius:14px;background:var(--card);color:var(--fg);padding:22px;width:min(480px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;box-shadow:6px 6px 0 var(--sh)}
+dialog::backdrop{background:rgba(0,0,0,.72)}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:600;font-size:13.5px;z-index:20;max-width:90vw;display:none}
+#toast.on{display:block}
+[hidden]{display:none!important}
+.ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}
+.up{border:2px solid var(--bd);border-radius:10px;padding:12px;display:grid;gap:8px}
+.up b{word-break:break-all;font-weight:600}
+.tg{display:inline-block;margin-right:8px;border-radius:6px;background:var(--hl);color:var(--hlf);padding:1px 8px;font-size:11px;font-weight:800;letter-spacing:.06em}
+.upa{display:flex;gap:8px;flex-wrap:wrap}
+.upa .btn{width:auto;min-height:40px;padding:0 14px;margin:0;flex:1 1 auto}
+.ok2{color:var(--tl);font-weight:600}
+.btn[data-armed]{background:var(--rd);border-color:var(--rd);color:#fff}
+@media(min-width:900px){.top{position:absolute;right:16px;top:14px;padding:0;z-index:5}}
+</style>
+</head>
+<body>
+<div class="top"><button class="theme" id="add" type="button" aria-haspopup="dialog">+ Add lecture</button><button class="theme" id="hbtn" type="button" aria-haspopup="dialog" hidden>Uploads (0)</button><button class="theme" id="theme" type="button" aria-label="Toggle light or dark theme">Theme</button></div>
+<dialog id="dlg" aria-labelledby="dt"><form id="df" novalidate>
+ <h1 class="disp" id="dt" style="font-size:26px">Add a lecture</h1>
+ <label for="file">Audio or video file</label><input id="file" type="file" accept="video/*,audio/*,.mp3,.mp4,.m4a,.wav,.webm,.mov,.mkv"><div class="err" id="fe" role="alert"></div><div class="sub" id="fi"></div>
+ <label for="attach">Add as</label><select id="attach"></select>
+ <label for="title">Title</label><input id="title" type="text" maxlength="80" autocomplete="off">
+ <label for="topics">Topics with times (optional)</label><textarea id="topics" placeholder="0:00 What HTML is&#10;0:45 Tags and elements"></textarea>
+ <div class="sub" style="margin-top:6px">Times make the lecture searchable here. Your full pipeline transcribes with Whisper instead. Files stay in this browser tab.</div>
+ <div class="row" style="margin-top:16px"><button type="button" class="btn" id="cx" style="flex:1">Cancel</button><button class="btn pri" type="submit" style="flex:1;margin-top:0">Add lecture</button></div>
+</form></dialog>
+<dialog id="hdlg" aria-labelledby="ht"><h1 class="disp" id="ht" style="font-size:26px">Recent uploads</h1>
+ <div class="sub" id="hs"></div><ul class="ul" id="hl"></ul>
+ <h2 class="disp" style="font-size:18px;margin:22px 0 0">Lectures</h2><ul class="ul" id="ll"></ul>
+ <div class="row" style="margin-top:16px"><button type="button" class="btn" data-act="hclear" id="hc" style="flex:1">Delete all uploads</button><button type="button" class="btn pri" data-act="hclose" style="flex:1;margin-top:0">Close</button></div></dialog>
+<div id="toast" role="status"></div>
+<noscript><p style="padding:24px;font:16px system-ui">RAG Based Assistant needs JavaScript. Please turn it on and reload.</p></noscript>
+<div class="page">
+ <section class="hero" aria-hidden="true">
+  <div class="logo"><div class="mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></div><div><div class="disp" style="font-size:21px">RAG Based Assistant</div><div class="sub">Lecture Seek</div></div></div>
+  <div><span class="sub" style="text-transform:uppercase;letter-spacing:.12em;font-size:11px">Retrieval-augmented · timestamps, not guesses</span>
+   <h2 class="disp">Ask the course. Get the <mark>exact moment.</mark></h2>
+   <p class="sub" style="font-size:15px;max-width:30rem">Sign in to keep your questions and see the lecture, and the second, that answers them.</p></div>
+  <div class="demo"><div class="sub">You asked</div><div style="margin:2px 0 10px;font-weight:500">What is the box model?</div>
+   <div class="sub">You can find that in Video 2, “CSS Basics”, starting at 0:00.</div><span class="chip">V2 · 0:00</span></div>
+ </section>
+ <section class="panel">
+  <div class="brand"><div class="logo"><div class="mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></div><div><div class="disp" style="font-size:20px">RAG Based Assistant</div><div class="sub">Ask the course. Get the exact moment.</div></div></div></div>
+  <div class="card" id="card"></div>
+  <p class="fine" id="fine"></p>
+ </section>
+</div>
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const EMAIL=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const G='<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.6a4.8 4.8 0 0 1-2.1 3.1v2.6h3.4c2-1.8 3.1-4.5 3.1-7.5z"/><path fill="#34A853" d="M12 22c2.8 0 5.2-.9 6.9-2.5l-3.4-2.6c-.9.6-2.1 1-3.5 1a6.1 6.1 0 0 1-5.8-4.2H2.7v2.7A10.4 10.4 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.2 13.7a6.2 6.2 0 0 1 0-3.9V7.1H2.7a10.4 10.4 0 0 0 0 9.3z"/><path fill="#EA4335" d="M12 5.9c1.5 0 2.9.5 4 1.5l3-3A10.4 10.4 0 0 0 2.7 7.1l3.5 2.7A6.2 6.2 0 0 1 12 5.9z"/></svg>';
+let view="in",busy=false,errs={},banner="",user=null;
+const fld=(id,label,type,auto,extra="")=>`<label for="${id}">${label}</label><div class="field"><input id="${id}" name="${id}" type="${type}" autocomplete="${auto}" ${extra} aria-invalid="${!!errs[id]}" aria-describedby="${id}-e" ${type==="email"?'inputmode="email" autocapitalize="none" spellcheck="false"':""}>${type==="password"?'<button type="button" class="eye" data-eye="'+id+'" aria-label="Show password">Show</button>':""}</div><div class="err" id="${id}-e" role="alert">${errs[id]||""}</div>`;
+const btn=t=>`<button class="btn pri" type="submit" ${busy?"disabled":""}>${busy?'<span class="spin"></span> Please wait…':t}</button>`;
+const social=`<div class="or">or</div><button class="btn" type="button" data-act="google" ${busy?"disabled":""}>${G} Continue with Google</button><button class="btn" type="button" data-act="guest" style="margin-top:10px" ${busy?"disabled":""}>Try the demo without an account</button>`;
+const V={
+ in:()=>`<div class="seg" role="tablist"><button role="tab" aria-selected="true" data-v="in">Sign in</button><button role="tab" aria-selected="false" data-v="up">Create account</button></div>
+  <h1 class="disp">Welcome back</h1><p class="sub" style="margin:0 0 4px">Pick up where your last question left off.</p>
+  <form novalidate id="f">${banner?`<div class="banner" role="alert">${banner}</div>`:""}${fld("email","Email","email","email")}${fld("password","Password","password","current-password")}
+  <div class="row"><label class="chk" style="margin:0"><input type="checkbox" id="rem" checked> Remember me</label><button type="button" class="link" data-v="fg">Forgot password?</button></div>${btn("Sign in")}</form>${social}`,
+ up:()=>`<div class="seg" role="tablist"><button role="tab" aria-selected="false" data-v="in">Sign in</button><button role="tab" aria-selected="true" data-v="up">Create account</button></div>
+  <h1 class="disp">Create your account</h1><p class="sub" style="margin:0 0 4px">Free. Questions are saved without your name.</p>
+  <form novalidate id="f">${banner?`<div class="banner" role="alert">${banner}</div>`:""}${fld("name","Name","text","name")}${fld("email","Email","email","email")}${fld("password","Password (8+ characters)","password","new-password")}
+  <div class="meter" aria-hidden="true"><i></i><i></i><i></i></div><div class="sub" id="pw-l" style="margin-top:4px;font-size:12px">&nbsp;</div>
+  <label class="chk"><input type="checkbox" id="terms" aria-invalid="${!!errs.terms}"> <span>I agree to the Terms and Privacy Policy</span></label><div class="err" role="alert">${errs.terms||""}</div>${btn("Create account")}</form>${social}`,
+ fg:()=>`<button class="link" data-v="in" style="padding-left:0">← Back to sign in</button><h1 class="disp">Reset your password</h1><p class="sub" style="margin:0">Enter your email and we’ll send a reset link.</p>
+  <form novalidate id="f">${fld("email","Email","email","email")}${btn("Send reset link")}</form>`,
+ sent:()=>`<div class="ok"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div><h1 class="disp">Check your inbox</h1><p class="sub">If an account exists for <b>${esc(user)}</b>, a reset link is on its way. It expires in 30 minutes.</p><button class="btn pri" data-v="in">Back to sign in</button>`,
+ done:()=>`<div class="ok"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div><h1 class="disp">${user.guest?"You’re in as a guest":"Signed in"}</h1><p class="sub">${user.guest?"Guest questions aren’t linked to an account.":"Welcome, <b>"+esc(user.name)+"</b>."}</p><button class="btn pri" data-act="open">Open RAG Based Assistant</button><button class="btn" data-act="out" style="margin-top:10px">Sign out</button>`,
+ app:()=>`<div class="row" style="margin:0 0 12px"><div><div class="disp" style="font-size:19px">Hi, ${esc(user.name)}</div><div class="sub" id="meta"></div></div><button class="link" data-act="out">Sign out</button></div><div id="chat" aria-live="polite" style="display:grid;gap:10px;max-height:44vh;overflow-y:auto"></div><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">${["What is the box model?","How do I add a link?","What is a function?"].map(q=>`<button type="button" class="btn" style="width:auto;min-height:40px;padding:0 14px;font-size:13px;font-weight:400" data-act="q" data-q="${q}">${q}</button>`).join("")}</div><form id="qf" novalidate style="display:flex;gap:8px;margin-top:12px"><input id="q" type="text" maxlength="500" placeholder="Ask a question…" aria-label="Ask a question" style="flex:1"><button class="btn pri" type="submit" style="width:auto;padding:0 20px;margin-top:0">Ask</button></form>`
+};
+function render(focus){$("#card").innerHTML=V[view]();document.querySelector(".page").classList.toggle("inapp",view==="app");$("#add").hidden=$("#hbtn").hidden=view!=="app";if(view==="app")updateMeta();$("#fine").textContent=view==="in"||view==="up"?"Demo screen: sign-in is simulated. Tip: an email containing “fail” shows the error state.":view==="app"?"Preview: uploaded files stay in your browser. Add topics with times to make a lecture searchable.":"";
+ if(focus)($("#"+focus)||$("#card h1")).focus?.()}
+function go(v){view=v;errs={};banner="";busy=false;render()}
+function finish(u,v="done"){busy=true;render();setTimeout(()=>{busy=false;user=u;view=v;errs={};banner="";render();$("#card h1").setAttribute("tabindex","-1");$("#card h1").focus()},900)}
+function strength(p){let n=0;if(p.length>=8)n++;if(/[A-Z]/.test(p)&&/[a-z]/.test(p))n++;if(/\d/.test(p)&&/[^A-Za-z0-9]|.{12,}/.test(p))n++;return p?Math.max(1,n):0}
+document.addEventListener("click",e=>{
+ const t=e.target.closest("[data-v],[data-act],[data-eye]");if(!t)return;
+ if(t.dataset.v)return go(t.dataset.v);
+ if(t.dataset.eye){const i=$("#"+t.dataset.eye);const s=i.type==="password";i.type=s?"text":"password";t.textContent=s?"Hide":"Show";t.setAttribute("aria-label",s?"Hide password":"Show password");return}
+ const a=t.dataset.act;
+ if(a==="q")return ask(t.dataset.q);
+ if(a==="addfor")return openDlg(t.dataset.n);
+ if(a==="hadd"){$("#hdlg").close();return openDlg()}
+ if(a==="hclose")return $("#hdlg").close();
+ if(a==="hclear")return twice(t,"Tap again to delete all",clearHist);
+ if(a==="ldel")return twice(t,"Tap again to delete",()=>delLecture(+t.dataset.n));
+ if(a==="hplay")return playUpload(t.dataset.id);
+ if(a==="hdel")return twice(t,"Tap again to delete",()=>delUpload(t.dataset.id));
+ if(a==="google")finish({name:"Google user"});
+ if(a==="guest")finish({guest:true,name:"Guest"});
+ if(a==="out"){user=null;go("in")}
+ if(a==="open"){t.disabled=true;t.innerHTML='<span class="spin"></span> Opening…';setTimeout(()=>{view="app";render();add("a","Hi! Ask me about the course and I’ll point to the video and the time.")},500)}
+});
+document.addEventListener("input",e=>{
+ if(e.target.id==="password"&&view==="up"){const n=strength(e.target.value);document.querySelectorAll(".meter i").forEach((b,i)=>b.style.background=i<n?["var(--rd)","var(--ac)","var(--tl)"][n-1]:"var(--mu)");$("#pw-l").textContent=["","Weak","Okay","Strong"][n]||"\u00a0"}
+});
+document.addEventListener("submit",e=>{
+ e.preventDefault();if(e.target.id==="qf"){const i=$("#q");const v=i.value;i.value="";return ask(v)}
+ if(busy)return;
+ const g=id=>($("#"+id)?.value||"").trim(),email=g("email"),pw=$("#password")?.value||"";errs={};banner="";
+ if(!EMAIL.test(email))errs.email="Enter a valid email like you@college.edu";
+ if(view==="up"&&g("name").length<2)errs.name="Enter your name (2+ characters)";
+ if(view!=="fg"&&(view==="up"?pw.length<8:!pw))errs.password=view==="up"?"Use at least 8 characters":"Enter your password";
+ if(view==="up"&&!$("#terms").checked)errs.terms="Please accept to continue";
+ if(Object.keys(errs).length){const keep={name:g("name"),email,rem:1};render();for(const k of["name","email"])if($("#"+k))$("#"+k).value=keep[k]||"";const first=["name","email","password","terms"].find(k=>errs[k]);$("#"+first)?.focus();return}
+ if(view==="fg"){user=email;return finish(email,"sent")}
+ if(/fail/i.test(email)){busy=true;render();setTimeout(()=>{busy=false;banner="Wrong email or password. Try again, or reset your password.";render();$("#email").value=email;$("#password").focus()},800);return}
+ finish({name:view==="up"?g("name"):email.split("@")[0]});
+});
+const ROWS=[{"n": 1, "t": "Introduction to HTML", "s": 0.0, "e": 39.0, "x": "Welcome to the course. In this first video we will learn what HTML is. HTML stands for HyperText Markup Language and it describes the structure of a web page. Every page starts with a doctype and an html tag that wraps everything else. Inside it we have a head section and a body section. The head holds the page title and other information about the page. The body holds everything the visitor actually sees. Headings go from h1 to h6, and h1 is the most important one. Paragraphs use the p tag."}, {"n": 1, "t": "Introduction to HTML", "s": 30.0, "e": 64.0, "x": "Headings go from h1 to h6, and h1 is the most important one. Paragraphs use the p tag. Links are made with the anchor tag and the href attribute. Images use the img tag with a src attribute and some alt text. Lists can be ordered or unordered. That is all for the HTML basics. In the next video we start styling pages with CSS."}, {"n": 2, "t": "CSS Basics", "s": 0.0, "e": 45.0, "x": "Welcome back. Today we will style our pages with CSS. CSS stands for Cascading Style Sheets and it controls colors, fonts and layout. You can add CSS inside a style tag or, better, in a separate stylesheet file. A rule has a selector and a block of declarations inside curly braces. Selectors can target tags, classes with a dot, or ids with a hash. To change the text color we use the color property, and for the background we use background-color. The font-family and font-size properties control the typography. Every element is a box made of content, padding, border and margin. This is called the box model. Padding is the space inside the border and margin is the space outside it."}, {"n": 2, "t": "CSS Basics", "s": 39.0, "e": 49.0, "x": "Padding is the space inside the border and margin is the space outside it. In the next video we will build a layout using flexbox."}, {"n": 3, "t": "JavaScript Intro", "s": 0.0, "e": 30.0, "x": "In this video we start JavaScript, the language that makes pages interactive. You can declare variables with let and const. Functions let you group code and reuse it. The DOM lets JavaScript read and change the elements on the page. We can listen for a click event on a button and run a function when it happens. That is the basic idea. Next we will build a small to-do list project."}];
+const L=[...new Map(ROWS.map(r=>[r.n,r])).keys()].map(n=>({n,t:ROWS.find(r=>r.n===n).t,clips:ROWS.filter(r=>r.n===n).map(r=>({s:r.s,e:r.e,x:r.x})),media:null}));
+const fmt=x=>Math.floor(x/3600)?Math.floor(x/3600)+":"+String(Math.floor(x%3600/60)).padStart(2,"0")+":"+String(Math.floor(x%60)).padStart(2,"0"):Math.floor(x/60)+":"+String(Math.floor(x%60)).padStart(2,"0");
+const STOP=new Set("a an the is are was do does did how what which i to of in on for and or it my me can you your this that with about be".split(" "));
+const tok=t=>(t.toLowerCase().match(/[a-z0-9]+/g)||[]).filter(w=>!STOP.has(w)).map(w=>w.replace(/s$/,""));
+function search(q){const qs=[...new Set(tok(q))];if(!qs.length)return null;
+ const cl=L.flatMap(l=>l.clips.map(c=>({l,c,set:new Set(tok(c.x+" "+l.t))})));
+ const idf=w=>{const n=cl.filter(o=>o.set.has(w)).length;return Math.log(1+(cl.length-n+.5)/(n+.5))};
+ const tot=qs.reduce((a,w)=>a+idf(w),0)||1;
+ return cl.map(o=>({...o,sim:qs.reduce((a,w)=>a+(o.set.has(w)?idf(w):0),0)/tot})).filter(o=>o.sim>=.15).sort((a,b)=>b.sim-a.sim)[0]||null}
+function parse(t){const r=[];t.split("\n").forEach(line=>{const m=line.trim().match(/^(?:(\d+):)?(\d{1,2}):(\d{2})\s+(.+)$/);if(m)r.push({s:(+(m[1]||0))*3600+(+m[2])*60+(+m[3]),x:m[4]})});r.sort((a,b)=>a.s-b.s);return r.map((o,i)=>({s:o.s,e:r[i+1]?r[i+1].s:o.s+60,x:o.x}))}
+function add(role,text,chip,node){const d=document.createElement("div");d.style.cssText="padding:10px 14px;border-radius:10px;max-width:92%;word-break:break-word;"+(role==="u"?"justify-self:end;background:var(--mu)":"border:2px solid var(--bd)")+(node?";width:min(100%,600px)":"");d.textContent=text;
+ if(chip){const c=document.createElement("span");c.textContent=chip;c.style.cssText="display:inline-block;margin-left:6px;border-radius:6px;background:var(--hl);color:var(--hlf);padding:2px 10px;font-size:12px;font-weight:800";d.append(c)}
+ if(node)d.append(node);$("#chat").append(d);$("#chat").scrollTop=1e9}
+function player(l,c){const w=document.createElement("div");w.style.marginTop="10px";
+ if(!l.media){const n=document.createElement("div");n.className="sub";n.textContent="No video is stored for this lecture yet.";const b=document.createElement("button");b.type="button";b.className="btn";b.style.cssText="margin-top:8px;min-height:42px;width:auto;padding:0 16px";b.dataset.act="addfor";b.dataset.n=l.n;b.textContent="Add video for Video "+l.n;w.append(n,b);return w}
+ const el=document.createElement(l.media.type==="audio"?"audio":"video");el.controls=true;el.playsInline=true;el.preload="metadata";el.src=l.media.url;
+ el.style.cssText="width:100%;max-height:340px;background:#000;border:2px solid var(--bd);border-radius:10px";
+ const seek=()=>{el.currentTime=c.s;el.play().catch(()=>{})};el.addEventListener("loadedmetadata",seek,{once:true});
+ const cap=document.createElement("div");cap.className="sub";cap.style.margin="6px 0";cap.textContent="Playing "+l.media.name+" from "+fmt(c.s);
+ const b=document.createElement("button");b.type="button";b.className="btn";b.style.cssText="min-height:40px;width:auto;padding:0 14px";b.textContent="Replay from "+fmt(c.s);b.onclick=seek;w.append(el,cap,b);return w}
+function ask(q){q=q.trim();if(q.length<2)return;add("u",q);const m=search(q);
+ setTimeout(()=>{if(!m)return add("a","I couldn\u2019t find that in the lectures. Try different words, or use Add lecture.");
+  add("a","You can find that in Video "+m.l.n+", \u201c"+m.l.t+"\u201d, starting at "+fmt(m.c.s)+".","V"+m.l.n+" \u00b7 "+fmt(m.c.s),player(m.l,m.c))},450)}
+function updateMeta(){$("#hbtn").textContent="Uploads ("+UPL.length+")";const m=$("#meta");if(m)m.textContent=L.length+" lectures \u00b7 "+L.filter(l=>l.media).length+" with video"}
+function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),3800)}
+function openDlg(n){if($("#hdlg").open)$("#hdlg").close();$("#df").reset();$("#fe").textContent="";$("#fi").textContent="";
+ $("#attach").innerHTML='<option value="new">New lecture</option>'+L.map(l=>'<option value="'+l.n+'">Attach to Video '+l.n+": "+esc(l.t)+"</option>").join("");
+ if(n)$("#attach").value=n;$("#dlg").showModal()}
+function addLecture(e){e.preventDefault();e.stopPropagation();
+ const f=$("#file").files[0],fe=$("#fe");
+ if(!f){fe.textContent="Choose an audio or video file.";return}
+ const isA=f.type.startsWith("audio")||/\.(mp3|m4a|wav|aac|ogg)$/i.test(f.name),isV=f.type.startsWith("video")||/\.(mp4|webm|mov|mkv)$/i.test(f.name);
+ if(!isA&&!isV){fe.textContent="That file is not audio or video.";return}
+ const target=$("#attach").value,title=$("#title").value.trim()||f.name.replace(/\.[^.]+$/,""),clips=parse($("#topics").value);
+ const id=Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+ const media={id,url:URL.createObjectURL(f),type:isA?"audio":"video",name:f.name};let l,created=false;
+ if(target==="new"){created=true;l={n:Math.max(0,...L.map(x=>x.n),...DEL)+1,t:title,clips:clips.length?clips:[{s:0,e:60,x:title}],media};L.push(l)}
+ else{l=L.find(x=>String(x.n)===target);if(l.media)URL.revokeObjectURL(l.media.url);l.media=media;l.clips.push(...clips);
+  created=UPL.some(u=>u.n===l.n&&u.created);UPL=UPL.filter(u=>u.n!==l.n)}
+ UPL.unshift({id,name:f.name,size:f.size,type:media.type,at:Date.now(),n:l.n,title:l.t,created:created||undefined,clips:created?l.clips:clips});saveHist();
+ $("#dlg").close();updateMeta();
+ const msg="Added \u201c"+l.t+"\u201d as Video "+l.n+(clips.length?" with "+clips.length+" searchable topics.":". Add topics with times to make it searchable.");
+ toast(msg);if(view==="app"&&$("#chat"))add("a",msg)}
+let UPL=[],DEL=[];
+function saveHist(){try{localStorage.setItem("rba_uploads",JSON.stringify(UPL))}catch(e){}}
+function loadHist(){try{DEL=JSON.parse(localStorage.getItem("rba_deleted")||"[]")}catch(e){DEL=[]}DEL.forEach(n=>{const i=L.findIndex(x=>x.n===n);if(i>=0)L.splice(i,1)});try{UPL=JSON.parse(localStorage.getItem("rba_uploads")||"[]").filter(u=>u&&u.id&&u.name)}catch(e){UPL=[]}
+ UPL.slice().reverse().forEach(u=>{let l=L.find(x=>x.n===u.n);
+  if(!l&&u.created){l={n:u.n,t:u.title,clips:(u.clips&&u.clips.length?u.clips:[{s:0,e:60,x:u.title}]),media:null};L.push(l)}
+  else if(l&&!u.created&&u.clips)l.clips.push(...u.clips)})}
+const ago=t=>{const m=Math.round((Date.now()-t)/6e4);return m<1?"just now":m<60?m+" min ago":m<1440?Math.round(m/60)+" h ago":new Date(t).toLocaleDateString()};
+const live=u=>{const l=L.find(x=>x.n===u.n);return !!(l&&l.media&&l.media.id===u.id)};
+function renderHist(){renderLec();const ul=$("#hl");$("#hs").textContent=UPL.length?UPL.length+" saved \u00b7 newest first":"";$("#hc").hidden=!UPL.length;
+ if(!UPL.length){ul.innerHTML='<li class="up"><div class="sub">No uploads yet. Files you add show up here.</div><div class="upa"><button type="button" class="btn" data-act="hadd">+ Add lecture</button></div></li>';return}
+ ul.innerHTML=UPL.map(u=>`<li class="up"><div><span class="tg">${u.type==="audio"?"AUDIO":"VIDEO"}</span><b>${esc(u.name)}</b>
+  <div class="sub" style="margin-top:4px">Video ${u.n}: ${esc(u.title)} \u00b7 ${(u.size/1048576).toFixed(1)} MB \u00b7 ${ago(u.at)}</div>
+  <div class="sub ${live(u)?"ok2":""}" style="margin-top:2px">${live(u)?"Ready to play":"File is not in this session. Re-add it to play."}</div></div>
+  <div class="upa">${live(u)?`<button type="button" class="btn" data-act="hplay" data-id="${u.id}">Play</button>`:`<button type="button" class="btn" data-act="addfor" data-n="${u.n}" data-id="${u.id}">Re-add file</button>`}
+  <button type="button" class="btn" data-act="hdel" data-id="${u.id}">Delete file</button></div></li>`).join("")}
+function renderLec(){$("#ll").innerHTML=L.length?L.map(l=>`<li class="up"><div><b>Video ${l.n}: ${esc(l.t)}</b><div class="sub" style="margin-top:4px">${l.clips.length} clips \u00b7 ${l.media?"video stored":"no video stored"}</div></div><div class="upa"><button type="button" class="btn" data-act="ldel" data-n="${l.n}">Delete lecture</button></div></li>`).join(""):'<li class="up"><div class="sub">No lectures left. Use + Add lecture.</div></li>'}
+function twice(t,msg,fn){if(t.dataset.armed){clearTimeout(t._t);return fn()}const o=t.textContent;t.dataset.armed="1";t.textContent=msg;t._t=setTimeout(()=>{delete t.dataset.armed;t.textContent=o},4000)}
+function delLecture(n){const l=L.find(x=>x.n===n);if(!l)return;if(l.media)URL.revokeObjectURL(l.media.url);
+ const made=UPL.some(u=>u.n===n&&u.created);if(!made&&ROWS.some(r=>r.n===n)&&!DEL.includes(n)){DEL.push(n);try{localStorage.setItem("rba_deleted",JSON.stringify(DEL))}catch(e){}}
+ L.splice(L.indexOf(l),1);UPL=UPL.filter(u=>u.n!==n);saveHist();updateMeta();renderHist();toast("Deleted Video "+n+": "+l.t)}
+function openHist(){renderHist();$("#hdlg").showModal()}
+function playUpload(id){const u=UPL.find(x=>x.id===id),l=u&&L.find(x=>x.n===u.n);if(!l||!l.media)return;
+ $("#hdlg").close();if($("#chat"))add("a","Playing \u201c"+u.name+"\u201d from the start.",null,player(l,{s:0}))}
+function dropLecture(u){const l=L.find(x=>x.n===u.n);if(!l)return;if(l.media&&l.media.id===u.id){URL.revokeObjectURL(l.media.url);l.media=null}
+ if(u.created&&!UPL.some(x=>x.n===u.n)){L.splice(L.indexOf(l),1)}}
+function delUpload(id){const u=UPL.find(x=>x.id===id);if(!u)return;UPL=UPL.filter(x=>x!==u);dropLecture(u);saveHist();updateMeta();renderHist()}
+function clearHist(){const all=UPL;UPL=[];all.forEach(dropLecture);saveHist();updateMeta();renderHist();toast("All uploads deleted.")}
+loadHist();
+$("#hbtn").onclick=openHist;
+$("#add").onclick=()=>openDlg();
+$("#cx").onclick=()=>$("#dlg").close();
+$("#file").onchange=e=>{const f=e.target.files[0];$("#fe").textContent="";$("#fi").textContent=f?f.name+" \u00b7 "+(f.size/1048576).toFixed(1)+" MB":"";if(f&&!$("#title").value)$("#title").value=f.name.replace(/\.[^.]+$/,"")};
+$("#df").addEventListener("submit",addLecture);
+$("#theme").onclick=()=>{const r=document.documentElement;const d=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=d?"light":"dark"};
+render();
+</script>
+</body>
+</html>
