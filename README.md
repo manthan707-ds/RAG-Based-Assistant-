@@ -11,7 +11,7 @@ Ask a question about your lectures and jump straight to the video, at the second
 ![No build step](https://img.shields.io/badge/build-none-brightgreen)
 ![Deployed on Vercel](https://img.shields.io/badge/deploy-Vercel-black?logo=vercel)
 
-**[Live demo](https://YOUR-PROJECT.vercel.app)**
+**[Live demo]((https://rag-based-assistant-psi.vercel.app/))**
 
 </div>
 
